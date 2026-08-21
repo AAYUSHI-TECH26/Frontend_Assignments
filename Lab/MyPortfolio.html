@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aayushi | Data Science Portfolio</title>
+
+<style>
+:root{
+  --plum:#3d2633;
+  --rose:#c77d8a;
+  --dark-rose:#a85f6d;
+  --cream:#fff9f7;
+  --blush:#f8e7e9;
+  --white:#fff;
+  --text:#3b3033;
+  --gray:#756a6d;
+  --border:#eadbdd;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{text-decoration:none;color:inherit}
+
+header{
+  background:var(--plum);
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 4px 15px #3d263322;
+}
+
+.logo h1{font-size:1.5rem}
+.logo p{font-size:.82rem;color:#ead7dc}
+
+nav ul{
+  display:flex;
+  gap:28px;
+  list-style:none;
+}
+
+nav a{
+  color:#f8eef0;
+  font-weight:600;
+  font-size:.9rem;
+}
+
+nav a:hover,
+nav a.active{
+  color:#e4a6af;
+}
+
+nav a.active{
+  border-bottom:2px solid #e4a6af;
+  padding-bottom:6px;
+}
+
+.hero{
+  min-height:480px;
+  padding:70px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:50px;
+  background:linear-gradient(135deg,#fff9f7,#f8e7e9);
+}
+
+.hero-text{max-width:650px}
+
+.hero h2{
+  font-size:3rem;
+  color:var(--plum);
+  margin-bottom:5px;
+}
+
+.hero h3{
+  color:var(--dark-rose);
+  font-size:1.4rem;
+  margin-bottom:18px;
+}
+
+.hero p{
+  color:var(--gray);
+  margin-bottom:25px;
+}
+
+.hero-img img{
+  width:260px;
+  height:260px;
+  object-fit:cover;
+  border-radius:50%;
+  border:7px solid white;
+  box-shadow:0 15px 35px #3d263328;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border:0;
+  border-radius:7px;
+  background:var(--plum);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#2b1a23;
+  transform:translateY(-2px);
+  box-shadow:0 7px 18px #3d26332b;
+}
+
+main{
+  max-width:1350px;
+  margin:auto;
+  padding:55px 7%;
+}
+
+.top-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.7fr;
+  gap:40px;
+  margin-bottom:55px;
+}
+
+.bottom-grid{
+  display:grid;
+  grid-template-columns:1.8fr 1fr;
+  gap:40px;
+}
+
+.title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:var(--plum);
+  font-size:1.25rem;
+  font-weight:800;
+  margin-bottom:17px;
+}
+
+.title span{color:var(--rose)}
+
+.about p{color:var(--gray);font-size:.94rem}
+
+.skills ul{list-style:none}
+
+.skills li{
+  margin:7px 0;
+  padding-left:16px;
+}
+
+.skills li::before{
+  content:"";
+  width:6px;
+  height:6px;
+  background:var(--rose);
+  border-radius:50%;
+  position:absolute;
+  margin-left:-15px;
+  margin-top:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  font-size:.86rem;
+}
+
+th,td{
+  border:1px solid var(--border);
+  padding:10px;
+  text-align:left;
+}
+
+th{
+  background:var(--blush);
+  color:var(--plum);
+}
+
+td{color:var(--gray)}
+
+.projects{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px #3d26331a;
+}
+
+.card h3{
+  font-size:1rem;
+  color:var(--plum);
+  margin-bottom:7px;
+}
+
+.card p{
+  color:var(--gray);
+  font-size:.86rem;
+  margin-bottom:10px;
+}
+
+.card a{
+  color:var(--dark-rose);
+  font-weight:700;
+  font-size:.88rem;
+}
+
+.social{
+  display:flex;
+  gap:12px;
+  margin-top:5px;
+}
+
+.social a{
+  width:43px;
+  height:43px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:8px;
+  color:white;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.social a:hover{transform:translateY(-3px)}
+
+.linkedin{background:#c77d8a}
+.github{background:var(--plum)}
+.email{background:#e8b7bf}
+
+.contact{
+  background:white;
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  box-shadow:0 5px 18px #3d26330d;
+}
+
+label{
+  display:block;
+  font-size:.88rem;
+  font-weight:700;
+  margin:12px 0 5px;
+  color:var(--plum);
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#fffafa;
+  font-family:inherit;
+  outline:none;
+}
+
+input:focus,textarea:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 0 3px #c77d8a20;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.buttons{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+
+.reset{
+  background:var(--blush);
+  color:var(--plum);
+}
+
+footer{
+  background:var(--plum);
+  color:#f8e9ec;
+  text-align:center;
+  padding:20px;
+  font-size:.85rem;
+}
+
+@media(max-width:950px){
+  .top-grid,.bottom-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+  header{flex-direction:column;gap:15px}
+  nav ul{gap:14px;flex-wrap:wrap;justify-content:center}
+  .hero{
+    flex-direction:column-reverse;
+    text-align:center;
+    padding:55px 7%;
+  }
+  .hero h2{font-size:2.3rem}
+  .hero-img img{width:220px;height:220px}
+  .projects{grid-template-columns:1fr}
+}
+
+@media(max-width:450px){
+  nav ul{gap:10px}
+  nav a{font-size:.8rem}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <h1>Aayushi</h1>
+    <p>Aspiring Data Scientist</p>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+
+  <div class="hero-text">
+    <h2>Hi, I'm Aayushi</h2>
+    <h3>Aspiring Data Scientist</h3>
+
+    <p>
+      I am an aspiring Data Scientist passionate about data analysis,
+      machine learning and turning real-world data into meaningful insights.
+      I enjoy building practical projects and continuously learning new technologies.
+    </p>
+
+    <a href="Aayushi_CV.pdf" target="_blank" class="btn">
+      Download CV
+    </a>
+  </div>
+
+  <div class="hero-img">
+    <img src="aayushi.png" alt="Aayushi Profile Photo">
+  </div>
+
+</section>
+
+<main>
+
+<div class="top-grid">
+
+  <section class="about" id="about">
+    <div class="title"><span>●</span> About Me</div>
+    <p>
+      I am a curious learner and problem solver with a strong interest in
+      Data Science and Machine Learning. My goal is to become a Data Scientist
+      and build data-driven solutions that solve real-world problems.
+    </p>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="title"><span>◆</span> Skills</div>
+    <ul>
+      <li>Python</li>
+      <li>NumPy & Pandas</li>
+      <li>Matplotlib & Seaborn</li>
+      <li>Machine Learning</li>
+      <li>Java & DSA</li>
+      <li>Git & GitHub</li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <div class="title"><span>◆</span> Education</div>
+
+    <table>
+      <tr>
+        <th>Qualification</th>
+        <th>Institute</th>
+        <th>Year</th>
+        <th>Result</th>
+      </tr>
+
+      <tr>
+        <td>B.Tech (CSE)</td>
+        <td>GLA University</td>
+        <td>2025 - Present</td>
+        <td>Undergraduate</td>
+      </tr>
+
+      <tr>
+        <td>12th</td>
+        <td>AGPS School</td>
+        <td>2024</td>
+        <td>88.4%</td>
+      </tr>
+
+      <tr>
+        <td>10th</td>
+        <td>AGPS School</td>
+        <td>2022</td>
+        <td>87.2%</td>
+      </tr>
+    </table>
+  </section>
+
+</div>
+
+<div class="bottom-grid">
+
+<section id="projects">
+
+  <div class="title"><span>◆</span> Projects</div>
+
+  <div class="projects">
+
+    <div class="card">
+      <h3>1. Diabetes Prediction App</h3>
+      <p>
+        Machine learning Streamlit application that predicts diabetes risk
+        using Random Forest, feature engineering and an explainable risk score.
+      </p>
+      <a href="https://github.com/AAYUSHI-TECH26" target="_blank">
+        GitHub →
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>2. TripEase – Smart Trip Management</h3>
+      <p>
+        Web-based travel management system for exploring destinations,
+        comparing packages, planning trips and managing bookings.
+      </p>
+      <a href="https://github.com/AAYUSHI-TECH26" target="_blank">
+        GitHub →
+      </a>
+    </div>
+
+
+    <div class="card">
+      <h3>3. SSoC26 – Open Source Contribution</h3>
+      <p>
+        Open-source contribution involving GitHub workflows, issues,
+        testing, debugging and collaborative development.
+      </p>
+      <a href="https://github.com/AAYUSHI-TECH26" target="_blank">
+        GitHub →
+      </a>
+    </div>
+
+  </div>
+
+  <div style="margin-top:35px">
+    <div class="title"><span>●</span> Connect with me</div>
+
+    <div class="social">
+      <a class="linkedin"
+         href="https://www.linkedin.com/in/aayushi-004102395"
+         target="_blank">
+        in
+      </a>
+
+      <a class="github"
+         href="https://github.com/AAYUSHI-TECH26"
+         target="_blank">
+        Git
+      </a>
+
+      <a class="email"
+         href="mailto:aayushi26112007@gmail.com">
+        ✉
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <div class="title"><span>●</span> Contact Me</div>
+
+  <form onsubmit="sendMessage(event)">
+
+    <label>Name</label>
+    <input id="name" type="text" placeholder="Your name" required>
+
+    <label>Email</label>
+    <input id="email" type="email" placeholder="Your email" required>
+
+    <label>Message</label>
+    <textarea id="message"
+      placeholder="Type your message..."
+      required></textarea>
+
+    <div class="buttons">
+      <button class="btn" type="submit">
+        Send Message
+      </button>
+
+      <button class="btn reset" type="reset">
+        Reset
+      </button>
+    </div>
+
+  </form>
+
+</section>
+
+</div>
+
+</main>
+
+<footer>
+  © 2026 Aayushi. All Rights Reserved.
+</footer>
+<script>
+function sendMessage(event) {
+  event.preventDefault();
+
+  const form = event.target;
+
+  const success = document.createElement("p");
+  success.textContent = "✓ Message sent successfully! Thank you for reaching out.";
+  success.style.color = "#a85f6d";
+  success.style.fontWeight = "600";
+  success.style.marginTop = "12px";
+
+  const oldMessage = form.querySelector(".success-message");
+  if (oldMessage) oldMessage.remove();
+
+  success.className = "success-message";
+  form.appendChild(success);
+
+  form.reset();
+}
+</script>
+
+</body>
+</html>
