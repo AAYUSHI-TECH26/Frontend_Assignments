@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color Theme Changer</title>
+<style>
+:root{--bg:#ffffff;--text:#222222;--card:#f1f1f1;--accent:#2c3e50}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:40px;text-align:center;transition:.3s}
+.card{background:var(--card);max-width:500px;margin:20px auto;padding:25px;border-radius:10px}
+button{padding:10px 18px;margin:5px;border:none;border-radius:5px;cursor:pointer;background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+<h1>Choose Your Theme</h1>
+<div>
+  <button onclick="setTheme('light')">Light</button>
+  <button onclick="setTheme('dark')">Dark</button>
+  <button onclick="setTheme('blue')">Blue</button>
+  <button onclick="setTheme('green')">Green</button>
+  <button onclick="setTheme('purple')">Purple</button>
+</div>
+<div class="card">
+  <h2>Sample Card</h2>
+  <p>Click any button above to change the color theme of this page. Your choice is saved even after refresh.</p>
+</div>
+
+<script>
+const themes = {
+  light:  {bg:"#ffffff", text:"#222222", card:"#f1f1f1", accent:"#2c3e50"},
+  dark:   {bg:"#121212", text:"#f1f1f1", card:"#1e1e1e", accent:"#bb86fc"},
+  blue:   {bg:"#e3f2fd", text:"#0d47a1", card:"#bbdefb", accent:"#1565c0"},
+  green:  {bg:"#e8f5e9", text:"#1b5e20", card:"#c8e6c9", accent:"#2e7d32"},
+  purple: {bg:"#f3e5f5", text:"#4a148c", card:"#e1bee7", accent:"#7b1fa2"}
+};
+
+function setTheme(name) {
+  const t = themes[name];
+  const root = document.documentElement.style;
+  root.setProperty("--bg", t.bg);
+  root.setProperty("--text", t.text);
+  root.setProperty("--card", t.card);
+  root.setProperty("--accent", t.accent);
+  localStorage.setItem("theme", name);
+}
+
+setTheme(localStorage.getItem("theme") || "light");
+</script>
+</body>
+</html>
